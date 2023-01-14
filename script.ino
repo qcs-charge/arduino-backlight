@@ -1,14 +1,16 @@
 #define GRBLED_PIN_R 6
 #define GRBLED_PIN_G 5
 #define GRBLED_PIN_B 3
-#define BTN1 12
-#define BTN2 13
-#define BTN3 11
-#define BTN4 10
+#define BTN1 10
+#define BTN2 11
+#define BTN3 12
+#define BTN4 13
 
-#define BTN_DELAY 2000
 
-int rgbled_r=255, rgbled_g=0, rgbled_b=0, mode=0, rgbled=0, k=0, frozen=false;
+int mode = 0, frozen_mode = 0;
+float rgbled_r = 255.0, rgbled_g = 0.0, rgbled_b = 0.0, rainbow_step = 0.25, rgbled = 0.2, k = 0.01;
+bool frozen = false;
+
 
 void setup(){
   Serial.begin(9600);
@@ -25,135 +27,120 @@ void setup(){
   analogWrite(GRBLED_PIN_R, 0);
   analogWrite(GRBLED_PIN_G, 255);
   analogWrite(GRBLED_PIN_B, 255);
-  delay(500);
+  delay(333);
   analogWrite(GRBLED_PIN_R, 255);
   analogWrite(GRBLED_PIN_G, 0);
   analogWrite(GRBLED_PIN_B, 255);
-  delay(500);
+  delay(333);
   analogWrite(GRBLED_PIN_R, 255);
   analogWrite(GRBLED_PIN_G, 255);
   analogWrite(GRBLED_PIN_B, 0);
-  delay(500);
+  delay(333);
 }
 
 void loop(){
-  if (!digitalRead(BTN4)) {
-    frozen = !frozen;
-    delay(300);
-  }
-  if (!frozen) {
-    if (!digitalRead(BTN1) && !digitalRead(BTN2)) {
-      analogWrite(GRBLED_PIN_R, 0);
-      analogWrite(GRBLED_PIN_G, 0);
-      analogWrite(GRBLED_PIN_B, 255);
-      delay(BTN_DELAY);
-    } else if (!digitalRead(BTN1)) {
+  if (!digitalRead(BTN1) || !digitalRead(BTN2)) {
+    if (!digitalRead(BTN1)) {
       analogWrite(GRBLED_PIN_R, 255);
       analogWrite(GRBLED_PIN_G, 0);
-      analogWrite(GRBLED_PIN_B, 255);
-      delay(BTN_DELAY);
-    } else if (!digitalRead(BTN2)) {
+    } else {
       analogWrite(GRBLED_PIN_R, 0);
       analogWrite(GRBLED_PIN_G, 255);
-      analogWrite(GRBLED_PIN_B, 255);
-      delay(BTN_DELAY);
-    } else if (!digitalRead(BTN3)) {
-      mode = (mode + 1) % 7;
-      rgbled = 0;
-      k = 1;
-      delay(300);
-    } else if (mode == 0) {
-      if (rgbled_r == 255) {
-        rgbled_r = 254;
-        rgbled_g = 1;
-      } else if (rgbled_g == 255) {
-        rgbled_g = 254;
-        rgbled_b = 1;
-      } else if (rgbled_b == 255) {
-        rgbled_b = 254;
-        rgbled_r = 1;
-      } else if (rgbled_r && rgbled_g) {
-        --rgbled_r;
-        ++rgbled_g;
-      } else if (rgbled_g && rgbled_b) {
-        --rgbled_g;
-        ++rgbled_b;
-      } else if (rgbled_b && rgbled_r) {
-        --rgbled_b;
-        ++rgbled_r;
-      }
-      analogWrite(GRBLED_PIN_R, 255-rgbled_r);
-      analogWrite(GRBLED_PIN_G, 255-rgbled_g);
-      analogWrite(GRBLED_PIN_B, 255-rgbled_b);
-      delay(30);
-    } else if (mode == 1) {
-      if (rgbled == 255) {
-        k = -abs(k);
-      } else if (rgbled == 1) {
-        k = abs(k);
-      }
-      rgbled = (rgbled + k) % 256;
-      analogWrite(GRBLED_PIN_R, 255 - rgbled);
-      analogWrite(GRBLED_PIN_G, 255 - rgbled);
-      analogWrite(GRBLED_PIN_B, 255 - rgbled);
-      delay(30);
-    } else if (mode == 2) {
-      if (rgbled == 255) {
-        k = -abs(k);
-      } else if (rgbled == 1) {
-        k = abs(k);
-      }
-      rgbled = (rgbled + k) % 256;
-      analogWrite(GRBLED_PIN_R, 255 - rgbled);
-      analogWrite(GRBLED_PIN_G, 255);
-      analogWrite(GRBLED_PIN_B, 255);
-      delay(30);
-    } else if (mode == 3) {
-      if (rgbled == 255) {
-        k = -abs(k);
-      } else if (rgbled == 1) {
-        k = abs(k);
-      }
-      rgbled = (rgbled + k) % 256;
-      analogWrite(GRBLED_PIN_R, 255);
-      analogWrite(GRBLED_PIN_G, 255 - rgbled);
-      analogWrite(GRBLED_PIN_B, 255);
-      delay(30);
-    } else if (mode == 4) {
-      if (rgbled == 255) {
-        k = -abs(k);
-      } else if (rgbled == 1) {
-        k = abs(k);
-      }
-      rgbled = (rgbled + k) % 256;
-      analogWrite(GRBLED_PIN_R, 255);
-      analogWrite(GRBLED_PIN_G, 255);
-      analogWrite(GRBLED_PIN_B, 255 - rgbled);
-      delay(30);
-    } else if (mode == 5) {
-      if (rgbled == 255) {
-        k = -abs(k);
-      } else if (rgbled == 1) {
-        k = abs(k);
-      }
-      rgbled = (rgbled + k) % 256;
-      analogWrite(GRBLED_PIN_R, 255 - rgbled);
-      analogWrite(GRBLED_PIN_G, 255 - rgbled);
-      analogWrite(GRBLED_PIN_B, 255);
-      delay(30);
-    } else if (mode == 6) {
-      if (rgbled == 255) {
-        k = -abs(k);
-      } else if (rgbled == 1) {
-        k = abs(k);
-      }
-      rgbled = (rgbled + k) % 256;
-      analogWrite(GRBLED_PIN_R, 255);
-      analogWrite(GRBLED_PIN_G, 255 - rgbled);
-      analogWrite(GRBLED_PIN_B, 255 - rgbled);
-      delay(30);
     }
-  } else {
+    analogWrite(GRBLED_PIN_B, 255);
+    delay(2000);
+    if (frozen) {
+      if (mode == 0) {
+        analogWrite(GRBLED_PIN_R, 255 - rgbled_r / 1);
+        analogWrite(GRBLED_PIN_G, 255 - rgbled_g / 1);
+        analogWrite(GRBLED_PIN_B, 255 - rgbled_b / 1);
+      } else {
+        analogWrite(GRBLED_PIN_R, rgbled_r / 1);
+        analogWrite(GRBLED_PIN_G, rgbled_g / 1);
+        analogWrite(GRBLED_PIN_B, rgbled_b / 1);
+      }
+    }
+  } else if (frozen && !digitalRead(BTN3)) {
+    frozen_mode = (frozen_mode + 1) % 2;
+    rgbled = 0.5;
+    k = 0.01;
+    delay(300);
+  } else if (!digitalRead(BTN3)) {
+    mode = (mode + 1) % 2;
+    delay(300);
+  } else if (!digitalRead(BTN4)) {
+    frozen_mode = 0;
+    frozen = !frozen;
+    rgbled = 0.5;
+    k = 0.01;
+    analogWrite(GRBLED_PIN_R, 255);
+    analogWrite(GRBLED_PIN_G, 255);
+    analogWrite(GRBLED_PIN_B, 255);
+    delay(100);
+    if (mode == 0) {
+      analogWrite(GRBLED_PIN_R, 255 - rgbled_r / 1);
+      analogWrite(GRBLED_PIN_G, 255 - rgbled_g / 1);
+      analogWrite(GRBLED_PIN_B, 255 - rgbled_b / 1);
+    } else {
+      analogWrite(GRBLED_PIN_R, rgbled_r / 1);
+      analogWrite(GRBLED_PIN_G, rgbled_g / 1);
+      analogWrite(GRBLED_PIN_B, rgbled_b / 1);
+    }
+    delay(200);
+  } else if (!frozen && (mode == 0 || mode == 1)) {
+    if (rgbled_r == 255) {
+      rgbled_r = 255 - rainbow_step;
+      rgbled_g = rainbow_step;
+    } else if (rgbled_g == 255) {
+      rgbled_g = 255 - rainbow_step;
+      rgbled_b = rainbow_step;
+    } else if (rgbled_b == 255) {
+      rgbled_b = 255 - rainbow_step;
+      rgbled_r = rainbow_step;
+    } else if (rgbled_r && rgbled_g) {
+      rgbled_r -= rainbow_step;
+      rgbled_g += rainbow_step;
+    } else if (rgbled_g && rgbled_b) {
+      rgbled_g -= rainbow_step;
+      rgbled_b += rainbow_step;
+    } else if (rgbled_b && rgbled_r) {
+      rgbled_b -= rainbow_step;
+      rgbled_r += rainbow_step;
+    }
+    if (mode == 0) {
+      analogWrite(GRBLED_PIN_R, 255 - rgbled_r / 1);
+      analogWrite(GRBLED_PIN_G, 255 - rgbled_g / 1);
+      analogWrite(GRBLED_PIN_B, 255 - rgbled_b / 1);
+    } else {
+      analogWrite(GRBLED_PIN_R, rgbled_r / 1);
+      analogWrite(GRBLED_PIN_G, rgbled_g / 1);
+      analogWrite(GRBLED_PIN_B, rgbled_b / 1);
+    }
+    delay(70);
+  } else if (frozen && frozen_mode == 0) {
+    if (mode == 0) {
+      analogWrite(GRBLED_PIN_R, 255 - rgbled_r / 1);
+      analogWrite(GRBLED_PIN_G, 255 - rgbled_g / 1);
+      analogWrite(GRBLED_PIN_B, 255 - rgbled_b / 1);
+    } else {
+      analogWrite(GRBLED_PIN_R, rgbled_r / 1);
+      analogWrite(GRBLED_PIN_G, rgbled_g / 1);
+      analogWrite(GRBLED_PIN_B, rgbled_b / 1);
+    }
+    delay(50);
+  } else if (frozen && frozen_mode == 1) {
+    rgbled += k;
+    if (rgbled <= 0.2) k = 0.01;
+    else if (rgbled >= 0.97) k = -0.01;
+    if (mode == 0) {
+      analogWrite(GRBLED_PIN_R, 255 - rgbled_r * rgbled / 1);
+      analogWrite(GRBLED_PIN_G, 255 - rgbled_g * rgbled / 1);
+      analogWrite(GRBLED_PIN_B, 255 - rgbled_b * rgbled / 1);
+    } else if (mode == 1) {
+      analogWrite(GRBLED_PIN_R, rgbled_r * rgbled / 1);
+      analogWrite(GRBLED_PIN_G, rgbled_g * rgbled / 1);
+      analogWrite(GRBLED_PIN_B, rgbled_b * rgbled / 1);
+    }
     delay(100);
   }
 }
