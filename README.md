@@ -1,3 +1,4 @@
 ## aruco_map.txt
 
-Copy to `/home/clover/catkin_ws/src/clover/aruco_pose/map`, don't forget to set `<arg name="map" default="lyceum128.txt"/>` in `/home/clover/catkin_ws/src/clover/clover/launch/aruco.launch`
+1. Copy file to `/home/clover/catkin_ws/src/clover/aruco_pose/map`
+2. Set `<arg name="map" default="aruco_map.txt"/>` in `/home/clover/catkin_ws/src/clover/clover/launch/aruco.launch`
