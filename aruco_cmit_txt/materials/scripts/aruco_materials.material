@@ -1,0 +1,129 @@
+
+material aruco/marker_2_15
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_15.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_16
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_16.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_101
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_101.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_102
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_102.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_103
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_103.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_104
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_104.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_105
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_105.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
+material aruco/marker_2_106
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_106.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+

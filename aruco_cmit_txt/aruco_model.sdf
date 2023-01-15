@@ -1,0 +1,146 @@
+
+<?xml version="1.0"?>
+<sdf version="1.5">
+    <model name="aruco_2_99">
+        <static>true</static>
+        <link name="aruco_2_99_link">
+
+<visual name="visual_marker_2_104">
+    <pose>0.0 2.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_104</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_105">
+    <pose>1.0 2.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_105</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_106">
+    <pose>2.0 2.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_106</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_101">
+    <pose>0.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_101</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_102">
+    <pose>1.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_102</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_103">
+    <pose>2.0 1.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_103</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_15">
+    <pose>1.0 0.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_15</name>
+        </script>
+    </material>
+</visual>
+
+<visual name="visual_marker_2_16">
+    <pose>2.0 0.0 0.0 0.0 0.0 1.57079632679</pose>
+    <cast_shadows>false</cast_shadows>
+    <geometry>
+        <box>
+            <size>0.44 0.44 1e-3</size>
+        </box>
+    </geometry>
+    <material>
+        <script>
+            <uri>model://aruco_cmit_txt/materials/scripts</uri>
+            <uri>model://aruco_cmit_txt/materials/textures</uri>
+            <name>aruco/marker_2_16</name>
+        </script>
+    </material>
+</visual>
+
+        </link>
+    </model>
+</sdf>
