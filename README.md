@@ -5,6 +5,4 @@
 
 ## aruco_cmit_txt
 
-1. Remove old directory from `/home/clover/catkin_ws/src/clover/clover_simulation/models` and paste new.
-
-
+Remove old directory from `/home/clover/catkin_ws/src/clover/clover_simulation/models` and paste new. Don't forget to backup old.
