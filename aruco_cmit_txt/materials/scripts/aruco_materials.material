@@ -31,6 +31,22 @@ material aruco/marker_2_16
     }
 }
 
+material aruco/marker_2_100
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture aruco_marker_2_100.png
+                filtering none
+                scale 1.0 1.0
+            }
+        }
+    }
+}
+
 material aruco/marker_2_101
 {
     technique
@@ -72,22 +88,6 @@ material aruco/marker_2_103
             texture_unit
             {
                 texture aruco_marker_2_103.png
-                filtering none
-                scale 1.0 1.0
-            }
-        }
-    }
-}
-
-material aruco/marker_2_104
-{
-    technique
-    {
-        pass
-        {
-            texture_unit
-            {
-                texture aruco_marker_2_104.png
                 filtering none
                 scale 1.0 1.0
             }
